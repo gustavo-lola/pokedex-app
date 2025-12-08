@@ -3,23 +3,23 @@ version: "3.9"
 services:
   backend:
     build:
-      context: ./backend 
+      context: .
       dockerfile: dockerfile
     restart: always
- 
+
     ports:
       - "21165:21165"
     depends_on:
-      - mongodb 
+      - mongodb
     environment:
       - DATABASE_url=mongodb://admin:mypass@mongodb:27017
     mem_limit: 256m
-    cpus: "0.5" 
+    cpus: "0.5"
 
   mongodb:
     image: mongo:latest
     restart: always
-    ports: 
+    ports:
       - "27017:27017"
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
@@ -29,5 +29,5 @@ services:
     mem_limit: 256m
     cpus: "0.5"
 
-volumes: 
+volumes:
   mongo_data:
